@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+
+<div>
+    <input type="text" id="contact_input" placeholder="enter contact name">
+    <button onclick="add()">add</button>
+    <button onclick="remove()">remove</button>
+    <ul id="lis"></ul>
+</div>
+
+<script>
+    let contacts = [];
+
+    function displar() {
+        const contacts_list = document.getElementById('lis');
+        contacts_list.innerHTML = '';
+        for (let contact of contacts) {
+            let li = document.createElement('li');
+            li.textContent = contact;
+            contacts_list.appendChild(li);
+        }
+    }
+
+    function add() {
+        const contact_input = document.getElementById('contact_input');
+        const contact_name = contact_input.value.trim();
+        
+        if (contact_name) {
+            if (contacts.length >= 7) {
+                contacts.shift();
+            }
+            contacts.push(contact_name);
+            contact_input.value = '';
+            displar();
+        } else {
+            alert("Please enter a contact name.");
+        }
+    }
+
+    function remove() {
+        if (contacts.length > 0) {
+            contacts.pop();
+            displar();
+        } else {
+            alert("no contacts to remove");
+        }
+    }
+    displar();
+</script>
+
+</body>
+</html>

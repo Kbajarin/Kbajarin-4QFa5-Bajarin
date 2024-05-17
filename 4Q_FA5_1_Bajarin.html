@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Shape Generator</title>
+</head>
+<body>
+    <h1></h1>
+    <pre id="output"></pre>
+
+    <script>
+        function promptd() {
+            var input;
+            while (true) {
+                input = prompt("Please enter a number:");
+                if (!isNaN(input)&& input !== null && input.trim() !== "") {
+                    return parseInt(input, 10);
+                } else {
+                    alert("invalid try again");
+                }
+            }
+        }
+
+        function thestring(num, x) {
+            let result = '';
+            for (let i = 0; i < x; i++) {
+                result += num + ' ';
+            }
+            return result.trim();
+        }
+
+        function odd(n) {
+            let cout = 'Number inputted: ' + n + '\n';
+            for (let i = n; i > 0; i--) {
+                cout += thestring(i, n) + '\n';
+            }
+            return cout;
+        }
+
+        function even(n) {
+            let cout='Number inputted: '+n+'\n';
+            for (let i = n; i > 0; i--) {
+                cout+=thestring(i, i)+'\n';
+            }
+            return cout;
+        }
+
+        function main() {
+            const num1=promptd();
+            let cout;
+            if (num1%2===0) {
+                cout=even(num1);
+            } else {
+                cout=odd(num1);
+            }
+            document.getElementById('output').innerText=cout;
+        }
+
+        window.onload = main;
+    </script>
+</body>
+</html>
